@@ -1,0 +1,37 @@
+// ---------------------------------------------------------
+// Variables
+// ---------------------------------------------------------
+
+$img-path: 'images/' !default;
+$fa-font-path: 'bower_components/font-awesome/webfonts';
+$icon-font-path: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/';
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800');
+
+$body-font-family: 'Raleway', Arial, sans-serif !default;
+$font-family-1: 'LemonMilk', sans-serif !default;
+$html-font-size: 16 !default; // px
+$body-font-size: 16 !default; // px
+
+$grid-columns:      12;
+$grid-gutter-width: 20px;
+$gutter: $grid-gutter-width / 2;
+
+$navbar-padding-y : 0;
+$navbar-padding-x : 0;
+
+
+// ---------------------------------------------------------
+// Couleurs
+// ---------------------------------------------------------
+
+// Bleue & Variance
+$color-1: black !default;
+$color-2: #22181C !default;
+$color-3: white !default;
+$color-4: darken(white, 15) !default;
+
+$color-5: #B81E20;
+$color-6: #FFD75A;
+$color-7: #FFE697;
+$color-8: #84DCCF;
