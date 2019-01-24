@@ -11,14 +11,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
 class SecurityController extends AbstractController
 {
     /**
     * @Route("/", name="home")
     */
-    public function home() {
-        return $this->render('home.html.twig');
+    public function home(Request $request) {
+      //$username = new User();
+
+      return $this->render('home.html.twig', [
+
+
+      ]);
     }
     /**
     * @Route("/inscription", name="security_registration")
@@ -57,4 +61,18 @@ class SecurityController extends AbstractController
     * @Route("/deconnexion", name="security_logout")
     */
     public function logout() {}
+
+    /**
+    * @Route("/profil", name="security_profil")
+    */
+    public function profil() {
+        return $this->render('security/profil.html.twig');
+    }
+
+    /**
+    * @Route("/admin", name="security_admin")
+    */
+    public function admin() {
+        return $this->render('security/admin.html.twig');
+    }
 }

@@ -48,6 +48,16 @@ class User implements UserInterface
 
     public $confirm_password;
 
+    /**
+    * @ORM\Column(type="array")
+    */
+    private $roles;
+
+    public function __construct()
+    {
+        $this->roles = array('ROLE_USER');
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,7 +102,8 @@ class User implements UserInterface
 
     public function getSalt() {}
 
-    public function getRoles() {
-      return ['ROLE_USER'];
+    public function getRoles()
+    {
+        return $this->roles;
     }
 }
