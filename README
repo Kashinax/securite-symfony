@@ -1,0 +1,28 @@
+### Notion de Sécurité par Symfony 4
+
+Ce projet utilise Symfony 4, Bootstrap et Sass.
+
+## Installation
+
+Symfony a besoin d'une base de donnée pour pouvoir fonctionner à plein potentiel.
+
+Les liens de connexions se trouvent dans le .env de ce projet.
+Veuillez y renseigner toutes les informations utiles à la connexion de votre base de donnée.
+
+```
+DATABASE_URL=mysql://[identifiant]:[mot_de_passe]@127.0.0.1:3306/[nom_base_de_donnees]
+```
+
+Pour pouvoir exécuter le projet, lancez la commande
+
+```
+php bin/console server:run
+```
+
+Et rendez-vous sur le lien généré
+
+```
+http://127.0.0.1:8000
+```
+
+Vous pouvez maintenant débuter votre évaluation.
