@@ -49,14 +49,20 @@ class User implements UserInterface
     public $confirm_password;
 
     /**
-    * @ORM\Column(type="array")
-    */
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+    /**
+     * @var array
+     * @ORM\Column(type="array")
+     */
     private $roles;
 
     public function __construct()
-    {
-        $this->roles = array('ROLE_USER');
-    }
+	{
+		$this->isActive = true;
+		$this->roles = ['ROLE_USER'];
+	}
 
     public function getId(): ?int
     {
@@ -98,12 +104,67 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /*
+	 * Get isActive
+	 */
+	public function getIsActive()
+	{
+		return $this->isActive;
+	}
+	/*
+	 * Set isActive
+	 */
+	public function setIsActive($isActive)
+	{
+		$this->isActive = $isActive;
+		return $this;
+	}
+
     public function eraseCredentials() {}
 
     public function getSalt() {}
 
-    public function getRoles()
-    {
-        return $this->roles;
-    }
+    // modifier la méthode getRoles
+	public function getRoles()
+	{
+		return $this->roles;
+	}
+	public function setRoles(array $roles)
+	{
+		if (!in_array('ROLE_USER', $roles))
+		{
+			$roles[] = 'ROLE_USER';
+		}
+		foreach ($roles as $role)
+		{
+			if(substr($role, 0, 5) !== 'ROLE_') {
+				throw new InvalidArgumentException("Chaque rôle doit commencer par 'ROLE_'");
+			}
+		}
+		$this->roles = $roles;
+		return $this;
+	}
+
+    /**
+       * @var string le token qui servira lors de l'oubli de mot de passe
+       * @ORM\Column(type="string", length=255, nullable=true)
+       */
+      protected $resetToken;
+
+      /**
+       * @return string
+       */
+      public function getResetToken(): string
+      {
+          return $this->resetToken;
+      }
+
+      /**
+       * @param string $resetToken
+       */
+      public function setResetToken(?string $resetToken): void
+      {
+          $this->resetToken = $resetToken;
+      }
 }
